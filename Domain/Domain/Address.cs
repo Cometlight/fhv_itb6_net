@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Address
+    public class Address
     {
+        private string street;
+        private string postalCode;
+        private string city;
+        
+        public string Street { get; set; }
+        public string PostalCode { get; set; }
+        public string City { get; set; }
     }
 }

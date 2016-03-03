@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Delivery
+    public class Delivery
     {
+        // maybe state...? or just state of order -> calculate state on the fly in order based on
+        // if there's a delivery, invoice, ...
     }
 }

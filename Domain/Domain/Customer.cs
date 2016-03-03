@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Customer
+    public class Customer : User
     {
+        private string firstName;
+        private string lastName;
+        private Address address;
+        private Cart cart;
+        private ICollection<Order> orders;
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public Address Address { get; set; }
+        public Cart Cart { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

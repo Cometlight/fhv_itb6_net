@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Cart
+    public class Cart
     {
+        private IDictionary<Product, int /* amount */> entries;
+
+        public IDictionary<Product, int> Entries { get; set; }
     }
 }

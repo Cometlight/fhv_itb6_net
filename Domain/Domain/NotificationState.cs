@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class OrderItem
+    public enum NotificationState
     {
+        Pending,
+        Sent
     }
 }

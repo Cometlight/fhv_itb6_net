@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Invoice
+    public class Invoice
     {
+        private DateTime date;
+
+        public DateTime Date { get; set; }
     }
 }

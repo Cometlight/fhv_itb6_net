@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class ProductCategory
+    public class ProductCategory
     {
+        private string name;
+        private ICollection<Product> products;
+
+        public string Name { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }
