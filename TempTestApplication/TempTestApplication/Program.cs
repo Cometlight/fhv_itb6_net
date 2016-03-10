@@ -27,7 +27,7 @@ namespace TempTestApplication
                 Address address = addressBroker.Get(connection, 1);
                 Console.WriteLine("Address: " + address);
 
-                Address addressNew = new Address("Bahngasse", "42", "1234", "Schwarzach", 2);
+                Address addressNew = new Address("Feldweg", "42", "1234", "Schwarzach", 2);
                 Console.WriteLine("AddressNew: " + addressNew);
                 addressBroker.Save(connection, ref addressNew);
                 Console.WriteLine("AddressNew: " + addressNew);
@@ -51,6 +51,8 @@ namespace TempTestApplication
                 Console.WriteLine($"{addresses.Count()} addresses are currently in the database.");
 
                 Invoice invoice = new Invoice();
+                invoice.CustomerId = 1;
+                invoice.OrderId = 1;
                 invoice.Date = DateTime.Now;
                 new Broker<Invoice>().Save(connection, ref invoice);
                 Console.WriteLine("Invoice: " + invoice);

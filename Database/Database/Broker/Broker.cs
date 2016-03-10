@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using Domain;
 using Dommel;
 using Dapper;
@@ -37,7 +39,7 @@ namespace Database.Broker
         /// <param name="id">The id of the object which is to be removed.</param>
         public void Delete(IDbConnection connection, int id)
         {
-            var obj = connection.Get<T>(id);
+            T obj = connection.Get<T>(id);
             Delete(connection, obj);
         }
 
@@ -54,11 +56,23 @@ namespace Database.Broker
         private void Insert(IDbConnection connection, ref T obj)
         {
             // Domel has no valid implementation of MySQL of Insert() as of version 1.5
+            // Hence, the following line does not work:
             // obj.Id = connection.Insert(obj);
-            // TODO fix address -> real table name
-            obj.Id = connection.Query<int>(@"INSERT address 
-                VALUES (@id, @street, @housenumber, @zipcode, @city, @country); 
-                SELECT LAST_INSERT_ID();", obj).FirstOrDefault();
+            
+            Type type = obj.GetType();
+            string tableName = DommelMapper.Resolvers.Table(type);
+            PropertyInfo keyProperty = DommelMapper.Resolvers.KeyProperty(type);
+            List<PropertyInfo> typeProperties = DommelMapper.Resolvers.Properties(type).Where(p => p != keyProperty).ToList();
+
+            string[] columnNames = typeProperties.Select(DommelMapper.Resolvers.Column).ToArray();
+            string[] paramNames = typeProperties.Select(p => "@" + p.Name).ToArray();
+
+            string sql = string.Format("INSERT {0} ({1}) VALUES ({2}); SELECT LAST_INSERT_ID();",
+                tableName,
+                string.Join(", ", columnNames),
+                string.Join(", ", paramNames));
+
+            obj.Id = connection.Query<int>(sql, obj).Single();
         }
 
         private void Update(IDbConnection connection, T obj)
