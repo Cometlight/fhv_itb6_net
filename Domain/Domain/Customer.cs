@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Customer : User
+    public class Customer : IID
     {
-        private string firstName;
-        private string lastName;
-        private Address address;
-        private Cart cart;
-        private ICollection<Order> orders;
-
+        public int? Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Address Address { get; set; }
-        public Cart Cart { get; set; }
-        public ICollection<Order> Orders { get; set; }
+        public int? AddressId { get; set; }
+        public int? UserId { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, FirstName: {FirstName}, LastName: {LastName}, AddressId: {AddressId}, UserId: {UserId}";
+        }
     }
 }

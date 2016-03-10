@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class User
+    public class User : IID
     {
-        private string email;
-        private string password;
+        public int? Id { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
 
-        public string Email { get; set; }
-        public String Password { get; set; }
-
-        public bool IsCorrectPassword(String password)
+        public override string ToString()
         {
-            // TODO IsCorrectPassword
-            return true;
+            return $"Id: {Id}, Login: {Login}, Password: {Password}";
         }
     }
 }

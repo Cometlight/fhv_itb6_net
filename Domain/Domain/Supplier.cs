@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Supplier
+    public class Supplier : IID
     {
-        private string name;
-
+        public int? Id { get; set; }
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Name: {Name}";
+        }
     }
 }

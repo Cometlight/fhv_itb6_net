@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Cart
+    public class Cart : IID
     {
-        private IDictionary<Product, int /* amount */> entries;
+        public int? Id { get; set; }
+        public int? CustomerId { get; set; }
 
-        public IDictionary<Product, int> Entries { get; set; }
+        public override string ToString()
+        {
+            return $"Id: {Id}, CustomerId: {CustomerId}";
+        }
     }
 }

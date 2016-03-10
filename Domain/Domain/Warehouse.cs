@@ -7,28 +7,14 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Warehouse
+    public class Warehouse : IID
     {
-        private IDictionary<Product, int /* amount */> products;
+        public int? Id { get; set; }
+        public string Name { get; set; }
 
-        public ICollection<Product> GetProductsAll()
+        public override string ToString()
         {
-            if (products == null)   // TODO Check if null check necessary...
-            {
-                return new Collection<Product>();
-            }
-            return products.Keys;
-        }
-
-        public ICollection<Product> GetProductsAvailable()
-        {
-            if (products == null)   // TODO Check if null check necessary...
-            {
-                return new Collection<Product>();
-            }
-            return products.Where(kvp => kvp.Value > 0)
-                .Select(kvp => kvp.Key)
-                .ToList();
+            return $"Id: {Id}, Name: {Name}";
         }
     }
 }

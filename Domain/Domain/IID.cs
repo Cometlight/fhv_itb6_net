@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public enum NotificationState
+    public interface IID
     {
-        Pending,
-        Sent
+        int? Id { get; set; }
     }
 }

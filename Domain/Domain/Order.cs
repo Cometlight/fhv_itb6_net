@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Order
+    public class Order : IID
     {
-        private DateTime date;
-        private Customer customer;
-        private ICollection<ProductItem> items;
-        private Delivery delivery;
-        private Invoice invoice;
-
+        public int? Id { get; set; }
         public DateTime Date { get; set; }
-        public Customer Customer { get; set; }
-        public ICollection<ProductItem> Items { get; set; }
-        public Delivery Delivery { get; set; }
-        public Invoice Invoice { get; set; }
+        public int? CustomerId { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Date: {Date}, CustomerId: {CustomerId}";
+        }
     }
 }

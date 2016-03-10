@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{40C17F4C-3BE9-468A-8A30-6647E69958E2}</ProjectGuid>
+    <ProjectGuid>{BF54B17E-DC37-4BFE-AA0C-42A7ACB9E87F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain</RootNamespace>
-    <AssemblyName>Domain</AssemblyName>
+    <RootNamespace>Service</RootNamespace>
+    <AssemblyName>Service</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,23 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address.cs" />
-    <Compile Include="Cart.cs" />
-    <Compile Include="CartEntry.cs" />
-    <Compile Include="Customer.cs" />
-    <Compile Include="CustomerNotification.cs" />
-    <Compile Include="Delivery.cs" />
-    <Compile Include="IID.cs" />
-    <Compile Include="Invoice.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="OrderItem.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="ProductCategory.cs" />
-    <Compile Include="ProductReview.cs" />
-    <Compile Include="Stock.cs" />
-    <Compile Include="Supplier.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="Warehouse.cs" />
+    <Compile Include="TempTestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

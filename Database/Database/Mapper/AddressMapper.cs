@@ -5,13 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper.FluentMap.Dommel.Mapping;
 
 namespace Database.Mapper
 {
-    class AddressMapper : EntityMap<Address>
+    class AddressMapper : DommelEntityMap<Address>
     {
         public AddressMapper()
         {
+            ToTable("address");
+
             Map(x => x.Id).ToColumn("address_id");
             Map(x => x.Street).ToColumn("address_street");
             Map(x => x.HouseNumber).ToColumn("address_housenumber");

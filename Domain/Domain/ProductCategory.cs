@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class ProductCategory
+    public class ProductCategory : IID
     {
-        private string name;
-        private ICollection<Product> products;
-
+        public int? Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Product> Products { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Name: {Name}";
+        }
     }
 }

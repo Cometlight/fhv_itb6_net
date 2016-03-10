@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Address
+    public class Address : IID
     {
         public int? Id { get; set; }
         public string Street { get; set; }
