@@ -23,7 +23,7 @@ namespace TempTestApplication
             string connectionString = "Server=" + servername + ";Database=" + database + ";Uid=" + uid + ";Pwd=" + pwd + ";";
             using (IDbConnection connection = new MySqlConnection(connectionString))
             {
-                Broker<Address> addressBroker = new Broker<Address>();
+                IBroker<Address> addressBroker = new Broker<Address>();
                 Address address = addressBroker.Get(connection, 1);
                 Console.WriteLine("Address: " + address);
 
@@ -50,10 +50,12 @@ namespace TempTestApplication
                 addresses = addressBroker.GetAll(connection);
                 Console.WriteLine($"{addresses.Count()} addresses are currently in the database.");
 
-                Invoice invoice = new Invoice();
-                invoice.CustomerId = 1;
-                invoice.OrderId = 1;
-                invoice.Date = DateTime.Now;
+                Invoice invoice = new Invoice
+                {
+                    CustomerId = 1,
+                    OrderId = 1,
+                    Date = DateTime.Now
+                };
                 new Broker<Invoice>().Save(connection, ref invoice);
                 Console.WriteLine("Invoice: " + invoice);
                 if (invoice.Id.HasValue)

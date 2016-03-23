@@ -9,7 +9,7 @@ using Dapper;
 
 namespace Database.Broker
 {
-    public class Broker<T> where T : class, IID
+    public class Broker<T> : IBroker<T> where T : class, IID
     {
         /// <summary>
         /// Returns the object with the specified id from the database.

@@ -42,11 +42,20 @@
       <HintPath>..\..\Domain\packages\Dapper.FluentMap.1.4.1\lib\net40\Dapper.FluentMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Dapper.FluentMap.Dommel, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Domain\packages\Dapper.FluentMap.Dommel.1.2.1\lib\net40\Dapper.FluentMap.Dommel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dommel, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Domain\packages\Dommel.1.4.2\lib\net45\Dommel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\..\Domain\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
