@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Invoice : IID
+    public class Invoice : IId
     {
         public int? Id { get; set; }
         public DateTime Date { get; set; }

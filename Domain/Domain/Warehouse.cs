@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Warehouse : IID
+    public class Warehouse : IId
     {
         public int? Id { get; set; }
         public string Name { get; set; }

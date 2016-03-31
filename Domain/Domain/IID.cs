@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IID
+    public interface IId
     {
         int? Id { get; set; }
     }

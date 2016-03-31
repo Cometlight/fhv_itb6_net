@@ -2,17 +2,29 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Database.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="servername" Type="System.String" Scope="User">
-      <Value Profile="(Default)">localhost</Value>
+    <Setting Name="servername" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;localhost&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
     </Setting>
-    <Setting Name="usename" Type="System.String" Scope="User">
-      <Value Profile="(Default)">fhv</Value>
+    <Setting Name="usename" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;fhv&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
     </Setting>
-    <Setting Name="password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">datenmanagement</Value>
+    <Setting Name="password" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;datenmanagement&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
     </Setting>
-    <Setting Name="database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">net_db_local</Value>
+    <Setting Name="database" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;net_db_local&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

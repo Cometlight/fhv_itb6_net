@@ -4,7 +4,7 @@ using Domain;
 
 namespace Database.Broker
 {
-    public interface IBroker<T> where T : class, IID
+    public interface IBroker<T> where T : class, IId
     {
         void Delete(IDbConnection connection, T obj);
         void Delete(IDbConnection connection, int id);

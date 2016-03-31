@@ -23,51 +23,47 @@ namespace Database.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
-        public string servername {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>localhost</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection servername {
             get {
-                return ((string)(this["servername"]));
-            }
-            set {
-                this["servername"] = value;
+                return ((global::System.Collections.Specialized.StringCollection)(this["servername"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fhv")]
-        public string usename {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>fhv</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection usename {
             get {
-                return ((string)(this["usename"]));
-            }
-            set {
-                this["usename"] = value;
+                return ((global::System.Collections.Specialized.StringCollection)(this["usename"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("datenmanagement")]
-        public string password {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>datenmanagement</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection password {
             get {
-                return ((string)(this["password"]));
-            }
-            set {
-                this["password"] = value;
+                return ((global::System.Collections.Specialized.StringCollection)(this["password"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("net_db_local")]
-        public string database {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>net_db_local</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection database {
             get {
-                return ((string)(this["database"]));
-            }
-            set {
-                this["database"] = value;
+                return ((global::System.Collections.Specialized.StringCollection)(this["database"]));
             }
         }
     }

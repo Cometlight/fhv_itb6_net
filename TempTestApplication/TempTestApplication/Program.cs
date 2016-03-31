@@ -16,10 +16,10 @@ namespace TempTestApplication
         static void Main(string[] args)
         {
             DapperConfiguration.Initialize();
-            string servername = Database.Properties.Settings.Default.servername;
-            string database = Database.Properties.Settings.Default.database;
-            string uid = Database.Properties.Settings.Default.usename;
-            string pwd = Database.Properties.Settings.Default.password;
+            string servername = Database.Properties.Settings.Default.servername[0];
+            string database = Database.Properties.Settings.Default.database[0];
+            string uid = Database.Properties.Settings.Default.usename[0];
+            string pwd = Database.Properties.Settings.Default.password[0];
             string connectionString = "Server=" + servername + ";Database=" + database + ";Uid=" + uid + ";Pwd=" + pwd + ";";
             using (IDbConnection connection = new MySqlConnection(connectionString))
             {
