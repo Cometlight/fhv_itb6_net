@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="ManagerApplication.ManageProductsUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ManagerApplication"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="ListProducts" SelectionChanged="ListProducts_OnSelectionChanged" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Number" Binding="{Binding Number, Mode=TwoWay}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Background="DarkGray"/>
+        <local:ProductUI x:Name="ProductUi" Grid.Column="2"/>
+    </Grid>
+</UserControl>
