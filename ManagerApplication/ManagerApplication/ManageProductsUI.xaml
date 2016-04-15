@@ -5,20 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ManagerApplication"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Name="ListProducts" SelectionChanged="ListProducts_OnSelectionChanged" AutoGenerateColumns="False">
+        <local:ProductSearch x:Name="ProductSearch" Grid.Row="0" Grid.Column="0"/>
+        <DataGrid Name="ListProducts" SelectionChanged="ListProducts_OnSelectionChanged" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Number" Binding="{Binding Number, Mode=TwoWay}" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay}" />
             </DataGrid.Columns>
         </DataGrid>
-        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Background="DarkGray"/>
-        <local:ProductUI x:Name="ProductUi" Grid.Column="2"/>
+        <GridSplitter Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Background="DarkGray"/>
+        <local:ProductUI x:Name="ProductUi" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
     </Grid>
 </UserControl>

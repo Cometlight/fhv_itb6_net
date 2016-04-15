@@ -37,8 +37,11 @@ namespace ManagerApplication
             if (!initialized)
             {
                 initialized = true;
+
                 IEnumerable<Product> products = new CrudService<Product>().GetAll();
                 ListProducts.ItemsSource = products;
+
+                ProductSearch.Initialize(ListProducts);
             }
         }
 

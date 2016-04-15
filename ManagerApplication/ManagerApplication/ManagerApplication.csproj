@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ProductSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProductUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +87,9 @@
   <ItemGroup>
     <Compile Include="ManageProductsUI.xaml.cs">
       <DependentUpon>ManageProductsUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSearch.xaml.cs">
+      <DependentUpon>ProductSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProductUI.xaml.cs">
       <DependentUpon>ProductUI.xaml</DependentUpon>
