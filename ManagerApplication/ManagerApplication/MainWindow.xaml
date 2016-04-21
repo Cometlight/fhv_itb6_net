@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ManagerApplication"
         mc:Ignorable="d"
-        Title="ManagerApplication" Height="400" Width="600">
+        Title="ManagerApplication" Height="500" Width="600" MinHeight="400" MinWidth="400">
     <Grid>
         <TabControl>
             <TabItem Header="Products">

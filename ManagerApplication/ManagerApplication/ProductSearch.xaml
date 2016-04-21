@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ManagerApplication"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="250" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -29,18 +30,31 @@
         <Label Grid.Row="2" Grid.Column="0">Name</Label>
         <TextBox Name="TextBoxName" Grid.Row="2" Grid.Column="1"/>
 
-        <Label Grid.Row="3" Grid.Column="0">Price</Label>
-        <TextBox Grid.Row="3" Grid.Column="1"/>
+        <Label Grid.Row="3" Grid.Column="0">Min. Price</Label>
+        <TextBox Name="TextBoxMinPrice" Grid.Row="3" Grid.Column="1"/>
 
-        <Label Grid.Row="4" Grid.Column="0">Category</Label>
-        <TextBox Grid.Row="4" Grid.Column="1"/>
+        <Label Grid.Row="4" Grid.Column="0">Max. Price</Label>
+        <TextBox Name="TextBoxMaxPrice" Grid.Row="4" Grid.Column="1"/>
 
-        <Label Grid.Row="5" Grid.Column="0">Supplier</Label>
-        <TextBox Grid.Row="5" Grid.Column="1"/>
+        <Label Grid.Row="5" Grid.Column="0">Category</Label>
+        <ComboBox Name="ComboBoxCategory" Grid.Row="5" Grid.Column="1"/>
 
-        <Label Grid.Row="6" Grid.Column="0">Description</Label>
-        <Button Name="ButtonSearch" Click="ButtonSearch_OnClick" Grid.Row="6" Grid.Column="1">
-            <TextBlock>Search</TextBlock>
-        </Button>
+        <Label Grid.Row="6" Grid.Column="0">Supplier</Label>
+        <ComboBox Name="ComboBoxSupplier" Grid.Row="6" Grid.Column="1"/>
+
+        <Grid Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="ButtonSearch" Click="ButtonSearch_OnClick" Grid.Column="0">
+                <TextBlock>Search</TextBlock>
+                <Button.Background>DarkSeaGreen</Button.Background>
+            </Button>
+            <Button Name="ButtonClear" Click="ButtonClear_OnClick" Grid.Column="1">
+                <TextBlock>Clear</TextBlock>
+                <Button.Background>LightCoral</Button.Background>
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>

@@ -9,16 +9,17 @@ namespace Service
 {
     public class ProductSearch
     {
+        // not static bc. there might be some configuration or caching later on
         // Additional parameter: "List of products called candidates"
-        public IEnumerable<Product> Search(IEnumerable<Product> candidates, int? id = null, string number = null, string name = null,
-            int? minPrice = null, int? maxPrice = null)
+        public ICollection<Product> Search(IEnumerable<Product> candidates, int? id = null, string number = null, string name = null,
+            decimal? minPrice = null, decimal? maxPrice = null)
         {
-            IEnumerable<Product> productsFiltered = candidates
+            ICollection<Product> productsFiltered = candidates
                 .Where(p => id == null || p.Id == id)
                 .Where(p => number == null || p.Number == number)
                 .Where(p => name == null || p.Name == name)
                 .Where(p => minPrice == null || p.Price >= minPrice)
-                .Where(p => maxPrice == null || p.Price <= maxPrice);
+                .Where(p => maxPrice == null || p.Price <= maxPrice).ToList();
 
             return productsFiltered;
         } 

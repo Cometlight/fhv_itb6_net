@@ -57,6 +57,14 @@ namespace ManagerApplication
             }
         }
 
-        
+        private void ButtonExport_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ButtonImport_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

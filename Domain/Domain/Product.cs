@@ -15,7 +15,7 @@ namespace Domain
         public string Number { get; set; }
         public int? CategoryId { get; set; }
         public int? SupplierId { get; set; }
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         public override string ToString()
         {

@@ -8,11 +8,12 @@
              d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="250"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="225"/>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -23,7 +24,19 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay}" />
             </DataGrid.Columns>
         </DataGrid>
-        <GridSplitter Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Background="DarkGray"/>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="ButtonExport" Click="ButtonExport_OnClick" Grid.Column="0">
+                <TextBlock>Export</TextBlock>
+            </Button>
+            <Button Name="ButtonImport" Click="ButtonImport_OnClick" Grid.Column="1">
+                <TextBlock>Import</TextBlock>
+            </Button>
+        </Grid>
+        <GridSplitter Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Stretch" Background="DarkGray"/>
         <local:ProductUI x:Name="ProductUi" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
     </Grid>
 </UserControl>

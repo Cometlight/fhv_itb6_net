@@ -16,7 +16,7 @@ namespace Tests.Database
     {
         private static readonly int databaseConnectionId = 0;
 
-        [SetUpFixture]
+        /*[SetUpFixture]
         public class Config
         {
             [OneTimeSetUp]
@@ -66,6 +66,6 @@ namespace Tests.Database
             IBroker<Product> broker = new Broker<Product>();
             Product entity = broker.Get(iDbConnection, id);
             Assert.AreEqual(id, entity.Id);
-        }
+        }*/
     }
 }
