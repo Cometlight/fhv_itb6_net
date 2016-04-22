@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{40C17F4C-3BE9-468A-8A30-6647E69958E2}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleManagerApp", "..\ManagerApp\ManagerApp\ExampleManagerApp.csproj", "{9AA4F8CD-D179-484D-A7DD-80F7D9841D35}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagerApplication", "..\ManagerApplication\ManagerApplication\ManagerApplication.csproj", "{F8D22C86-FB74-4F10-B0AA-6AF83126B236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XML", "..\XML\XML\XML.csproj", "{3FC63860-4725-415D-A439-F72938892CD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{F8D22C86-FB74-4F10-B0AA-6AF83126B236}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8D22C86-FB74-4F10-B0AA-6AF83126B236}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8D22C86-FB74-4F10-B0AA-6AF83126B236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FC63860-4725-415D-A439-F72938892CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FC63860-4725-415D-A439-F72938892CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FC63860-4725-415D-A439-F72938892CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FC63860-4725-415D-A439-F72938892CD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

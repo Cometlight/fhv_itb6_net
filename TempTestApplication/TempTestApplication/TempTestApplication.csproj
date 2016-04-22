@@ -85,6 +85,10 @@
       <Project>{bf54b17e-dc37-4bfe-aa0c-42a7acb9e87f}</Project>
       <Name>Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\XML\XML\XML.csproj">
+      <Project>{3FC63860-4725-415D-A439-F72938892CD5}</Project>
+      <Name>XML</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
