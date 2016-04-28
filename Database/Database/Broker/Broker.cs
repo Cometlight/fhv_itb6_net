@@ -17,7 +17,7 @@ namespace Database.Broker
         /// <param name="connection">The database connection</param>
         /// <param name="id">The id of the address which is to be returned.</param>
         /// <returns></returns>
-        public T Get(IDbConnection connection, int id)
+        public T Get(IDbConnection connection, int? id)
         {
             return connection.Get<T>(id);
         }
@@ -37,7 +37,7 @@ namespace Database.Broker
         /// </summary>
         /// <param name="connection">The database connection</param>
         /// <param name="id">The id of the object which is to be removed.</param>
-        public void Delete(IDbConnection connection, int id)
+        public void Delete(IDbConnection connection, int? id)
         {
             T obj = connection.Get<T>(id);
             Delete(connection, obj);

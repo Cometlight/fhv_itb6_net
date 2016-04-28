@@ -15,6 +15,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80"/>
@@ -40,5 +41,10 @@
 
         <Label Grid.Row="6" Grid.Column="0">Description</Label>
         <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Description}"></TextBox>
+
+        <Button Name="ButtonSave" Click="ButtonSave_OnClick" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock FontSize="14">Save all Changes</TextBlock>
+            <Button.Background>DarkSeaGreen</Button.Background>
+        </Button>
     </Grid>
 </UserControl>

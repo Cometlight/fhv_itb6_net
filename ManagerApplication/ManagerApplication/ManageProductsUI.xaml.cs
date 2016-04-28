@@ -16,7 +16,10 @@ using System.Windows.Shapes;
 using Database;
 using Database.Broker;
 using Domain;
+using Microsoft.Win32;
 using Service;
+using XML;
+using System.Linq;
 
 namespace ManagerApplication
 {
@@ -57,14 +60,26 @@ namespace ManagerApplication
             }
         }
 
-        private void ButtonExport_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonExport_OnClick(object sender, RoutedEventArgs e) // TODO maybe rename button to "Export List" or "Export All"
         {
-            
+            SaveFileDialog saveFileDialog = new SaveFileDialog {Filter = "XML files (*.xml)|*.xml"};
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string fileName = saveFileDialog.FileName;
+                List<Product> productsToExport = ((IEnumerable<Product>) ListProducts.ItemsSource).ToList();
+                new XmlExportImport().Export<Product, ProductXml>(fileName, productsToExport);
+            }
         }
 
         private void ButtonImport_OnClick(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new OpenFileDialog {Filter = "XML files (*.xml)|*.xml"};
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fileName = openFileDialog.FileName;
+                List<Product> productsLoaded = new XmlExportImport().Import<Product, ProductXml>(fileName);
+                ListProducts.ItemsSource = productsLoaded;
+            }
         }
     }
 }

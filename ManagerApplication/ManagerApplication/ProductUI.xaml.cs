@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Domain;
+using Service;
 
 namespace ManagerApplication
 {
@@ -21,15 +22,22 @@ namespace ManagerApplication
     /// </summary>
     public partial class ProductUI : UserControl
     {
+        public Product SelectedProduct
+        {
+            get { return DataContext as Product; }
+            set { DataContext = value; }
+        }
+
         public ProductUI()
         {
             InitializeComponent();
         }
 
-        public Product SelectedProduct
+        // TODO Add button in ManageProductsUI to reload whole list from DB
+        private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
         {
-            get { return DataContext as Product; }
-            set { DataContext = value; }
+            Product productToUpdate = SelectedProduct;
+            new CrudService<Product>().Save(ref productToUpdate);
         }
     }
 }

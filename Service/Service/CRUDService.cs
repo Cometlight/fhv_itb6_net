@@ -8,7 +8,7 @@ namespace Service
 {
     public class CrudService<T> where T : class, IId
     {
-        public T Get(int id)
+        public T Get(int? id)
         {
             IBroker<T> broker = new Broker<T>();
             using (IDbConnection connection = new ConnectionManager().GetDbConnection())
@@ -26,7 +26,7 @@ namespace Service
             }
         }
 
-        public void Delete(int id)
+        public void Delete(int? id)
         {
             IBroker<T> broker = new Broker<T>();
             using (IDbConnection connection = new ConnectionManager().GetDbConnection())

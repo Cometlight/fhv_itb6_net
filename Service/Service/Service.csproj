@@ -43,6 +43,7 @@
     <Compile Include="CRUDService.cs" />
     <Compile Include="ProductSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XMLExportImport.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Database\Database\Database.csproj">
@@ -52,6 +53,10 @@
     <ProjectReference Include="..\..\Domain\Domain\Domain.csproj">
       <Project>{40c17f4c-3be9-468a-8a30-6647e69958e2}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\XML\XML\XML.csproj">
+      <Project>{3fc63860-4725-415d-a439-f72938892cd5}</Project>
+      <Name>XML</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
