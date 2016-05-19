@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ManagerApplication"
+             xmlns:viewModel="clr-namespace:ViewModel;assembly=ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
@@ -18,7 +19,10 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <local:ProductSearch x:Name="ProductSearch" Grid.Row="0" Grid.Column="0"/>
-        <DataGrid Name="ListProducts" SelectionChanged="ListProducts_OnSelectionChanged" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0">
+        <DataGrid Name="ProductsListProducts" ItemsSource="{Binding ProductsList}" SelectionChanged="ListProducts_OnSelectionChanged" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0">
+            <DataGrid.DataContext>
+                <viewModel:Products/>
+            </DataGrid.DataContext>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Number" Binding="{Binding Number, Mode=TwoWay}" Width="75"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay}" Width="*" />

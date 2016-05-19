@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Domain;
+using ViewModel;
 using Service;
 
 namespace ManagerApplication
@@ -36,8 +36,8 @@ namespace ManagerApplication
         // TODO Add button in ManageProductsUI to reload whole list from DB
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
         {
-            Product productToUpdate = SelectedProduct;
-            new CrudService<Product>().Save(ref productToUpdate);
+//            Product productToUpdate = SelectedProduct;
+//            new CrudService<Product>().Save(ref productToUpdate);
         }
     }
 }

@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Database;
 using Database.Broker;
-using Domain;
+using ViewModel;
 using Microsoft.Win32;
 using Service;
 using XML;
@@ -60,7 +60,7 @@ namespace ManagerApplication
             }
         }
 
-        private void ButtonExport_OnClick(object sender, RoutedEventArgs e) // TODO maybe rename button to "Export List" or "Export All"
+        private void ButtonExport_OnClick(object sender, RoutedEventArgs e) // TODO maybe rename button to "Export ProductsList" or "Export All"
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog {Filter = "XML files (*.xml)|*.xml"};
             if (saveFileDialog.ShowDialog() == true)
