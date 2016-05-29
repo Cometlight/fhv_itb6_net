@@ -7,12 +7,14 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using ViewModel.Commands;
 
 namespace ViewModel
 {
     public class Products : ViewModelBase
     {
-        private BindingList<Product> productsList = new BindingList<Product>(); 
+        private BindingList<Product> productsList = new BindingList<Product>();
 
         public BindingList<Product> ProductsList
         {
@@ -25,14 +27,15 @@ namespace ViewModel
             }
         }
 
-        public void ReloadAllProducts()
+        public ICommand ExportProductsAsXml { get; private set; }
+        public ICommand ImportProductsAsXml { get; private set; }
+        public ICommand ReloadProductsFromDb { get; private set; }
+
+        public Products()
         {
-            productsList.Clear();
-            IEnumerable<Domain.Product> products = new CrudService<Domain.Product>().GetAll();
-            foreach (Domain.Product product in products)
-            {
-                productsList.Add(new Product(product));
-            }
+            ExportProductsAsXml = new ExportProductsAsXml(this);
+            ImportProductsAsXml = new ImportProductsAsXml(this);
+            ReloadProductsFromDb = new ReloadProductsFromDb(this);
         }
     }
 }

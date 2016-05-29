@@ -16,7 +16,7 @@ namespace Tests.Database
     {
         private static readonly int databaseConnectionId = 0;
 
-        /*[SetUpFixture]
+        [SetUpFixture]
         public class Config
         {
             [OneTimeSetUp]
@@ -47,25 +47,70 @@ namespace Tests.Database
             iDbConnection.Close();
         }
 
-        [Test, Order(1)]
-        public void Insert()
+        [Test]
+        public void InsertNoId()
         {
-            IBroker<User> broker = new Broker<User>();
-            User entity = new User
+            IBroker<Product> broker = new Broker<Product>();
+            Product entity = new Product()
             {
-                Password = "password",
-                Login = "login"
+                Name = "Flux capacitor",
+                Number = "42"
             };
             broker.Save(iDbConnection, ref entity);
+            Product entityRetrieved = broker.Get(iDbConnection, entity.Id);
+            Assert.NotNull(entityRetrieved);
+            Assert.AreEqual(entity.Id, entityRetrieved.Id);
+            Assert.AreEqual(entity.Name, entityRetrieved.Name);
+            Assert.AreEqual(entity.Number, entityRetrieved.Number);
+            // clean up
+            broker.Delete(iDbConnection, entity);
         }
 
         [Test]
-        [TestCase(1)]
-        public void Get(int id)
+        public void Delete()
         {
             IBroker<Product> broker = new Broker<Product>();
-            Product entity = broker.Get(iDbConnection, id);
-            Assert.AreEqual(id, entity.Id);
-        }*/
+            Product entity = new Product()
+            {
+                Name = "Flux capacitor",
+                Number = "42"
+            };
+            broker.Save(iDbConnection, ref entity);
+            Product entityRetrieved = broker.Get(iDbConnection, entity.Id);
+            Assert.NotNull(entityRetrieved);
+            broker.Delete(iDbConnection, entity.Id);
+            entityRetrieved = broker.Get(iDbConnection, entity.Id);
+            Assert.Null(entityRetrieved);
+        }
+
+        [Test]
+        public void Update()
+        {
+            IBroker<Product> broker = new Broker<Product>();
+            Product entity = new Product()
+            {
+                Name = "Batmobile",
+                Number = "1337"
+            };
+            broker.Save(iDbConnection, ref entity);
+            Product entityUpdated = new Product()
+            {
+                Id = entity.Id,
+                Name = "Millennium Falcon",
+                Number = entity.Number,
+                Description = "Corellian YT-1300 light freighter"
+            };
+            broker.Save(iDbConnection, ref entityUpdated);
+
+            Product entityRetrieved = broker.Get(iDbConnection, entity.Id);
+            Assert.NotNull(entityRetrieved);
+            Assert.AreEqual(entity.Id, entityRetrieved.Id);
+            Assert.AreEqual(entityUpdated.Name, entityRetrieved.Name);
+            Assert.AreEqual(entity.Number, entityRetrieved.Number);
+            Assert.AreEqual(entityUpdated.Description, entityRetrieved.Description);
+            // clean up
+            broker.Delete(iDbConnection, entity.Id);
+        }
+        
     }
 }

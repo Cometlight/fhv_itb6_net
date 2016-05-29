@@ -4,23 +4,34 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using ViewModel.Commands;
 
 namespace ViewModel
 {
     public class Product : ViewModelBase
     {
-        private readonly Domain.Product model;
+        private Domain.Product model;
+
+        public Domain.Product Model
+        {
+            get { return model; }
+            set { model = value; }
+        }
+
+        public ICommand SaveProductToDb { get; private set; }
 
         public Product() { }
 
         public Product(Domain.Product model)
         {
             this.model = model;
+            SaveProductToDb = new SaveProductToDb(this);
         }
 
         public int? Id
         {
-            get { return model.Id; }
+            get { return model?.Id; }
             set
             {
                 model.Id = value;
@@ -32,7 +43,7 @@ namespace ViewModel
 
         public string Name
         {
-            get { return model.Name; }
+            get { return model?.Name; }
             set
             {
                 model.Name = value;
@@ -43,7 +54,7 @@ namespace ViewModel
 
         public string Description
         {
-            get { return model.Description; }
+            get { return model?.Description; }
             set
             {
                 model.Description = value;
@@ -54,7 +65,7 @@ namespace ViewModel
 
         public string Image
         {
-            get { return model.Image; }
+            get { return model?.Image; }
             set
             {
                 model.Image = value;
@@ -65,7 +76,7 @@ namespace ViewModel
 
         public string Number
         {
-            get { return model.Number; }
+            get { return model?.Number; }
             set
             {
                 model.Number = value;
@@ -76,7 +87,7 @@ namespace ViewModel
 
         public int? CategoryId
         {
-            get { return model.CategoryId; }
+            get { return model?.CategoryId; }
             set
             {
                 model.CategoryId = value;
@@ -87,7 +98,7 @@ namespace ViewModel
 
         public int? SupplierId
         {
-            get { return model.SupplierId; }
+            get { return model?.SupplierId; }
             set
             {
                 model.SupplierId = value;
@@ -98,7 +109,7 @@ namespace ViewModel
 
         public decimal? Price
         {
-            get { return model.Price; }
+            get { return model?.Price; }
             set
             {
                 model.Price = value;

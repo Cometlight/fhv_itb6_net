@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="ManagerApplication.ManageCategoriesUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModel="clr-namespace:ViewModel;assembly=ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600">
+    <UserControl.DataContext>
+        <viewModel:ProductCategories/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Click="ButtonAddRow_OnClick" Grid.Column="0">
+                <TextBlock>Add Row</TextBlock>
+            </Button>
+            <Button Command="{Binding UpdateProductCategoriesInDb}" Grid.Column="1">
+                <TextBlock>Save Changes to Database</TextBlock>
+                <Button.Background>DarkSeaGreen</Button.Background>
+            </Button>
+            <Button Command="{Binding ReloadProductCategoriesFromDb}" Grid.Column="2">
+                <TextBlock>Discard Changes</TextBlock>
+                <Button.Background>LightCoral</Button.Background>
+            </Button>
+        </Grid>
+        <DataGrid Name="ListCategories" ItemsSource="{Binding ProductCategoriesList}" CanUserAddRows="False" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True" Width="100"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="ButtonRemoveRow_OnClick">
+                                <TextBlock>Remove</TextBlock>
+                                <Button.Background>LightCoral</Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -33,5 +33,10 @@ namespace ManagerApplication
         {
             ManageProductsUI.Initialize();
         }
+
+        private void ManageCategoriesUI_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            ManageCategoriesUI.Initialize();
+        }
     }
 }

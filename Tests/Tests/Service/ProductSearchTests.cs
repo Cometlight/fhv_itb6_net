@@ -63,14 +63,14 @@ namespace Tests.Service
         [Test]
         public void SearchNull()
         {
-            ICollection<Product> results = new ProductSearch().Search(products, null, null, null, null, null);
+            ICollection<Product> results = new ProductSearch().Search(products, null, null, null, null, null, null, null);
             Assert.AreEqual(products.Count, results.Count);
         }
 
         [Test]
         public void SearchCombinedAll()
         {
-            ICollection<Product> results = new ProductSearch().Search(products, id: 0, number: "01", name: "name01", minPrice: 1, maxPrice: 1);
+            ICollection<Product> results = new ProductSearch().Search(products, id: 0, number: "01", name: "name01", minPrice: 1, maxPrice: 1, productCategoryId: 0, supplierId: 1);
             Assert.AreEqual(1, results.Count);
             Assert.IsTrue(results.Contains(product0));
         }
@@ -150,6 +150,38 @@ namespace Tests.Service
             ICollection<Product> results = new ProductSearch().Search(products, maxPrice: 1);
             Assert.AreEqual(1, results.Count);
             Assert.IsTrue(results.Contains(product0));
+        }
+
+        [Test]
+        public void SearchProductCategory0Results()
+        {
+            ICollection<Product> results = new ProductSearch().Search(products, productCategoryId: 999);
+            Assert.AreEqual(0, results.Count);
+        }
+
+        [Test]
+        public void SearchProductCategory2Results()
+        {
+            ICollection<Product> results = new ProductSearch().Search(products, productCategoryId: 1);
+            Assert.AreEqual(2, results.Count);
+            Assert.IsTrue(results.Contains(product1));
+            Assert.IsTrue(results.Contains(product2));
+        }
+
+        [Test]
+        public void SearchSupplier0Results()
+        {
+            ICollection<Product> results = new ProductSearch().Search(products, supplierId: 999);
+            Assert.AreEqual(0, results.Count);
+        }
+
+        [Test]
+        public void SearchSupplier2Results()
+        {
+            ICollection<Product> results = new ProductSearch().Search(products, supplierId: 2);
+            Assert.AreEqual(2, results.Count);
+            Assert.IsTrue(results.Contains(product1));
+            Assert.IsTrue(results.Contains(product2));
         }
     }
 }

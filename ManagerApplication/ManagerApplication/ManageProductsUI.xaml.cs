@@ -20,15 +20,16 @@ using Microsoft.Win32;
 using Service;
 using XML;
 using System.Linq;
+using ViewModel.Commands;
 
 namespace ManagerApplication
 {
     /// <summary>
     /// Interaction logic for ManageProductsUI.xaml
     /// </summary>
-    public partial class ManageProductsUI : UserControl
+    public partial class ManageProductsUI
     {
-        private bool initialized = false;
+        private bool initialized;
 
         public ManageProductsUI()
         {
@@ -40,11 +41,19 @@ namespace ManagerApplication
             if (!initialized)
             {
                 initialized = true;
-
-                IEnumerable<Product> products = new CrudService<Product>().GetAll();
-                ListProducts.ItemsSource = products;
-
-                ProductSearch.Initialize(ListProducts);
+                try
+                {
+                    Products products = ListProducts.DataContext as Products;
+                    if (products != null && products.ReloadProductsFromDb.CanExecute(null))
+                    {
+                        products.ReloadProductsFromDb.Execute(null);
+                    }
+                    ProductSearch.Initialize(products);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
 
@@ -60,25 +69,31 @@ namespace ManagerApplication
             }
         }
 
-        private void ButtonExport_OnClick(object sender, RoutedEventArgs e) // TODO maybe rename button to "Export ProductsList" or "Export All"
+        private void ButtonExport_OnClick(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog {Filter = "XML files (*.xml)|*.xml"};
             if (saveFileDialog.ShowDialog() == true)
             {
                 string fileName = saveFileDialog.FileName;
-                List<Product> productsToExport = ((IEnumerable<Product>) ListProducts.ItemsSource).ToList();
-                new XmlExportImport().Export<Product, ProductXml>(fileName, productsToExport);
+                var viewModel = (Products) DataContext;
+                if (viewModel.ExportProductsAsXml.CanExecute(null))
+                {
+                    viewModel.ExportProductsAsXml.Execute(fileName);
+                }
             }
         }
 
         private void ButtonImport_OnClick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog {Filter = "XML files (*.xml)|*.xml"};
+            OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "XML files (*.xml)|*.xml" };
             if (openFileDialog.ShowDialog() == true)
             {
                 string fileName = openFileDialog.FileName;
-                List<Product> productsLoaded = new XmlExportImport().Import<Product, ProductXml>(fileName);
-                ListProducts.ItemsSource = productsLoaded;
+                var viewModel = (Products)DataContext;
+                if (viewModel.ImportProductsAsXml.CanExecute(null))
+                {
+                    viewModel.ImportProductsAsXml.Execute(fileName);
+                }
             }
         }
     }

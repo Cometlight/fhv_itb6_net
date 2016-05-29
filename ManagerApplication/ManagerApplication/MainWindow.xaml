@@ -11,7 +11,10 @@
             <TabItem Header="Products">
                 <local:ManageProductsUI x:Name="ManageProductsUI" Loaded="ManageProductsUI_OnLoaded"/>
             </TabItem>
-            <TabItem Header="Customers"></TabItem>
+            <TabItem Header="Categories">
+                <local:ManageCategoriesUI x:Name="ManageCategoriesUI" Loaded="ManageCategoriesUI_OnLoaded" ></local:ManageCategoriesUI>
+            </TabItem>
+            <TabItem Header="Supplier"></TabItem>
         </TabControl>
     </Grid>
 </Window>

@@ -7,40 +7,48 @@
              xmlns:viewModel="clr-namespace:ViewModel;assembly=ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
+    <UserControl.DataContext>
+        <viewModel:Products/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="250"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="225"/>
+            <ColumnDefinition Width="225" MinWidth="25"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="*"/>
+            <!-- Following MinWidth is not respected by GridSplitter, as noted in http://stackoverflow.com/a/24124228
+                A workaround might be necessary. -->
+            <ColumnDefinition Width="*" MinWidth="25"/>
         </Grid.ColumnDefinitions>
         <local:ProductSearch x:Name="ProductSearch" Grid.Row="0" Grid.Column="0"/>
-        <DataGrid Name="ProductsListProducts" ItemsSource="{Binding ProductsList}" SelectionChanged="ListProducts_OnSelectionChanged" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0">
-            <DataGrid.DataContext>
-                <viewModel:Products/>
-            </DataGrid.DataContext>
+        <DataGrid Name="ListProducts" ItemsSource="{Binding ProductsList}" SelectionChanged="ListProducts_OnSelectionChanged" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Number" Binding="{Binding Number, Mode=TwoWay}" Width="75"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay}" Width="*" />
+                <DataGridTextColumn Header="Number" Binding="{Binding Number, Mode=TwoWay}" Width="75" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay}" Width="*" IsReadOnly="True" />
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+        <Button Command="{Binding ReloadProductsFromDb}" Grid.Row="2" Grid.Column="0">
+            <TextBlock>Reload from Database</TextBlock>
+        </Button>
+        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Name="ButtonExport" Click="ButtonExport_OnClick" Grid.Column="0">
+            <!-- Note that Command="{Binding ExportProductsAsXml}" was not used instead of the onClick event because the file location has to be
+                determined using the saveFileDialog, which however is not part of the command. Unfortunately, we miss out on the "CanExecute"-behaviour. -->
+            <Button Click="ButtonExport_OnClick" Grid.Column="0">
                 <TextBlock>Export</TextBlock>
             </Button>
-            <Button Name="ButtonImport" Click="ButtonImport_OnClick" Grid.Column="1">
+            <Button Click="ButtonImport_OnClick" Grid.Column="1">
                 <TextBlock>Import</TextBlock>
             </Button>
         </Grid>
-        <GridSplitter Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Stretch" Background="DarkGray"/>
-        <local:ProductUI x:Name="ProductUi" Grid.Row="0" Grid.RowSpan="3" Grid.Column="2"/>
+        <GridSplitter Grid.Row="0" Grid.RowSpan="4" Grid.Column="1" HorizontalAlignment="Stretch" Background="DarkGray"/>
+        <local:ProductUI x:Name="ProductUi" Grid.Row="0" Grid.RowSpan="4" Grid.Column="2"/>
     </Grid>
 </UserControl>

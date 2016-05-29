@@ -1,30 +1,23 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Domain;
 using Service;
+using ViewModel;
+using Product = Domain.Product;
 
 namespace ManagerApplication
 {
     /// <summary>
     /// Interaction logic for ProductSearch.xaml
     /// </summary>
-    public partial class ProductSearch : UserControl
+    public partial class ProductSearch
     {
-        private DataGrid searchResultsTarget;
-        private ICollection<TextBox> textBoxes;
+        private Products searchResultsTarget;
+        private readonly ICollection<TextBox> textBoxes;
 
 
         public ProductSearch()
@@ -37,17 +30,24 @@ namespace ManagerApplication
                 TextBoxNumber,
                 TextBoxMinPrice,
                 TextBoxMaxPrice
-            };// TODO add comboboxes
+            };
         }
-
-        // TODO: This does not look very elegent @ System.Windows.Controls.DataGrid
-        public void Initialize(DataGrid searchResultsTarget)
+        
+        public void Initialize(Products searchResultsTarget)
         {
             this.searchResultsTarget = searchResultsTarget;
-            var categories = new List<string>() {"Category 1", "Category 2"};   // TODO Load from DB
+
+            // Note that it would be a cleaner approach to set as much as possible in the XAML file, like it was done for
+            // the ManageProductsUI and ProductUI
+            List<ProductCategory> categories = new List<ProductCategory>();
+            categories.AddRange(new CrudService<Domain.ProductCategory>().GetAll().Select(model => new ProductCategory(model)));
             ComboBoxCategory.ItemsSource = categories;
-            var supplier = new List<string>() { "Supplier 1", "Supplier 2" };   // TODO Load from DB
-            ComboBoxSupplier.ItemsSource = supplier;
+            ComboBoxCategory.DisplayMemberPath = "Name";
+
+            // TODO Here, a view model should also be used, like it was did above
+            List<Domain.Supplier> suppliers = new CrudService<Domain.Supplier>().GetAll().ToList();
+            ComboBoxSupplier.ItemsSource = suppliers;
+            ComboBoxSupplier.DisplayMemberPath = "Name";
         }
 
         private void ButtonSearch_OnClick(object sender, RoutedEventArgs e)
@@ -59,15 +59,19 @@ namespace ManagerApplication
             string name = GetSearchName();
             decimal? minPrice = GetSearchMinPrice();
             decimal? maxPrice = GetSearchMaxPrice();
+            int? productCategoryId = GetSearchProductCategoryId();
+            int? supplierId = GetSearchSupplierId();
 
             // It would be better to use the database facade, which could construct
             // the needed SQL query, and query it directly from the database. This
             // way, not all products would have to be loaded.
             // However, the goal of the method ProductSearch.Search() is to demonstrate LINQ.
             IEnumerable<Product> candidates = new CrudService<Product>().GetAll();
-            IEnumerable<Product> productsFound = new Service.ProductSearch().Search(candidates, id, number, name, minPrice, maxPrice);
-            // TODO maybe check if initialized already or sth.
-            searchResultsTarget.ItemsSource = productsFound;
+            IEnumerable<Product> productsFound = new Service.ProductSearch().Search(candidates, id, number, name, minPrice, maxPrice, productCategoryId, supplierId);
+            
+            searchResultsTarget.ProductsList =
+                new BindingList<ViewModel.Product>(
+                    productsFound.Select(product => new ViewModel.Product(product)).ToList());
         }
 
         private void ButtonClear_OnClick(object sender, RoutedEventArgs e)
@@ -77,6 +81,8 @@ namespace ManagerApplication
                 textBox.Text = "";
             }
             ResetWarningBackgroundColors();
+            ComboBoxCategory.SelectedItem = null;
+            ComboBoxSupplier.SelectedItem = null;
         }
 
         private void ResetWarningBackgroundColors()
@@ -86,8 +92,7 @@ namespace ManagerApplication
                 textBox.Background = Brushes.White;
             }
         }
-
-        // TODO Refactor the GetSearch* methods (problem: code duplication)
+        
         private int? GetSearchId()
         {
             int? id = null;
@@ -148,6 +153,18 @@ namespace ManagerApplication
                     TextBoxMaxPrice.Background = Brushes.Red;
             }
             return maxPrice;
+        }
+
+        private int? GetSearchProductCategoryId()
+        {
+            ProductCategory productCategory = ComboBoxCategory.SelectionBoxItem as ProductCategory;
+            return productCategory?.Id;
+        }
+
+        private int? GetSearchSupplierId()
+        {
+            Domain.Supplier supplier = ComboBoxCategory.SelectionBoxItem as Domain.Supplier;
+            return supplier?.Id;
         }
     }
 }
