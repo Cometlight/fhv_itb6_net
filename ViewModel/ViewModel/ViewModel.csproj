@@ -44,11 +44,11 @@
   <ItemGroup>
     <Compile Include="Commands\ReloadProductCategoriesFromDb.cs" />
     <Compile Include="Commands\UpdateProductCategoriesInDb.cs" />
+    <Compile Include="Delegates.cs" />
     <Compile Include="ProductCategories.cs" />
     <Compile Include="ProductCategory.cs" />
     <Compile Include="Commands\ExportProductsAsXml.cs" />
     <Compile Include="Commands\ImportProductsAsXml.cs" />
-    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\ReloadProductsFromDb.cs" />
     <Compile Include="Commands\SaveProductToDb.cs" />
     <Compile Include="Product.cs" />

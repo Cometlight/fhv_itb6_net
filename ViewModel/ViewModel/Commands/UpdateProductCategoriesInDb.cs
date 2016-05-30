@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Service;
 
@@ -17,8 +14,12 @@ namespace ViewModel.Commands
 
         public UpdateProductCategoriesInDb(ProductCategories productCategories)
         {
+            if (productCategories == null)
+                throw new ArgumentNullException(nameof(productCategories));
+
             this.productCategories = productCategories;
             this.productCategories.ProductCategoriesList.ListChanged += (sender, args) => RaiseCanExecuteChanged();
+            this.productCategories.UnsavedChangesChanged += (sender, value) => RaiseCanExecuteChanged();
         }
 
         protected void RaiseCanExecuteChanged()
@@ -29,6 +30,10 @@ namespace ViewModel.Commands
         public bool CanExecute(object parameter)
         {
             if (productCategories.ProductCategoriesList == null || productCategories.ProductCategoriesList.Count == 0)
+                return false;
+
+            // No need to update something if nothing has changed
+            if (!productCategories.UnsavedChanges)
                 return false;
 
             return productCategories.ProductCategoriesList.All(productCategory => !string.IsNullOrEmpty(productCategory.Name));
@@ -55,6 +60,7 @@ namespace ViewModel.Commands
                 if (categoryToRemove.HasValue)
                     crudService.Delete(categoryToRemove);
             }
+            productCategories.AllChangesSaved();
         }
     }
 }

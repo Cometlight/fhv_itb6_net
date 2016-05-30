@@ -21,14 +21,14 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Click="ButtonAddRow_OnClick" Grid.Column="0">
-                <TextBlock>Add Row</TextBlock>
+                <TextBlock>Add Category</TextBlock>
             </Button>
             <Button Command="{Binding UpdateProductCategoriesInDb}" Grid.Column="1">
                 <TextBlock>Save Changes to Database</TextBlock>
                 <Button.Background>DarkSeaGreen</Button.Background>
             </Button>
             <Button Command="{Binding ReloadProductCategoriesFromDb}" Grid.Column="2">
-                <TextBlock>Discard Changes</TextBlock>
+                <TextBlock>Discard Changes and Reload</TextBlock>
                 <Button.Background>LightCoral</Button.Background>
             </Button>
         </Grid>

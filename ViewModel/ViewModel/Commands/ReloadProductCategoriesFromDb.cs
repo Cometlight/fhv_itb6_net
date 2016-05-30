@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Service;
 
@@ -41,6 +38,8 @@ namespace ViewModel.Commands
             {
                 productCategories.ProductCategoriesList.Add(new ProductCategory(domainProductCategory));
             }
+            // Everything has just been reloaded from the database, hence there cannot be unsaved changes
+            productCategories.AllChangesSaved();
         }
     }
 }

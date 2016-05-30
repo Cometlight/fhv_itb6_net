@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using System.Windows.Input;
 using ViewModel.Commands;
 
@@ -11,6 +6,7 @@ namespace ViewModel
 {
     public class Product : ViewModelBase
     {
+        private bool unsavedChanges;
         private Domain.Product model;
 
         public Domain.Product Model
@@ -18,6 +14,18 @@ namespace ViewModel
             get { return model; }
             set { model = value; }
         }
+
+        public bool UnsavedChanges
+        {
+            get { return unsavedChanges; }
+            set
+            {
+                unsavedChanges = value;
+                UnsavedChangesChanged?.Invoke(this, value);
+            }
+        }
+
+        public event Delegates.UnsavedChangesChangedEventHandler UnsavedChangesChanged;
 
         public ICommand SaveProductToDb { get; private set; }
 
@@ -29,12 +37,23 @@ namespace ViewModel
             SaveProductToDb = new SaveProductToDb(this);
         }
 
+        public void AllChangesSaved()
+        {
+            UnsavedChanges = false;
+        }
+
+        public void AllChangesReverted()
+        {
+            UnsavedChanges = false;
+        }
+
         public int? Id
         {
             get { return model?.Id; }
             set
             {
                 model.Id = value;
+                UnsavedChanges = true;
                 // The name is in form set_Id, hence the front part is removed with Substring(4)
                 string propertyName = MethodBase.GetCurrentMethod().Name.Substring(4);
                 RaisePropertyChanged(propertyName);
@@ -47,6 +66,7 @@ namespace ViewModel
             set
             {
                 model.Name = value;
+                UnsavedChanges = true;
                 string propertyName = MethodBase.GetCurrentMethod().Name.Substring(4);
                 RaisePropertyChanged(propertyName);
             }
@@ -58,6 +78,7 @@ namespace ViewModel
             set
             {
                 model.Description = value;
+                UnsavedChanges = true;
                 string propertyName = MethodBase.GetCurrentMethod().Name.Substring(4);
                 RaisePropertyChanged(propertyName);
             }
@@ -69,6 +90,7 @@ namespace ViewModel
             set
             {
                 model.Image = value;
+                UnsavedChanges = true;
                 string propertyName = MethodBase.GetCurrentMethod().Name.Substring(4);
                 RaisePropertyChanged(propertyName);
             }
@@ -80,6 +102,7 @@ namespace ViewModel
             set
             {
                 model.Number = value;
+                UnsavedChanges = true;
                 string propertyName = MethodBase.GetCurrentMethod().Name.Substring(4);
                 RaisePropertyChanged(propertyName);
             }
@@ -91,6 +114,7 @@ namespace ViewModel
             set
             {
                 model.CategoryId = value;
+                UnsavedChanges = true;
                 string propertyName = MethodBase.GetCurrentMethod().Name.Substring(4);
                 RaisePropertyChanged(propertyName);
             }
@@ -102,6 +126,7 @@ namespace ViewModel
             set
             {
                 model.SupplierId = value;
+                UnsavedChanges = true;
                 string propertyName = MethodBase.GetCurrentMethod().Name.Substring(4);
                 RaisePropertyChanged(propertyName);
             }
@@ -113,6 +138,7 @@ namespace ViewModel
             set
             {
                 model.Price = value;
+                UnsavedChanges = true;
                 string propertyName = MethodBase.GetCurrentMethod().Name.Substring(4);
                 RaisePropertyChanged(propertyName);
             }

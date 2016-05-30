@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using Service;
@@ -16,6 +15,9 @@ namespace ViewModel.Commands
 
         public ExportProductsAsXml(Products products)
         {
+            if (products == null)
+                throw new ArgumentNullException(nameof(products));
+
             this.products = products;
             this.products.PropertyChanged += (sender, args) => RaiseCanExecuteChanged();
             this.products.ProductsList.ListChanged += (sender, args) => RaiseCanExecuteChanged();
@@ -37,6 +39,9 @@ namespace ViewModel.Commands
         /// <param name="parameter">A string which represents the location to save the file.</param>
         public void Execute(object parameter)
         {
+            if (parameter == null)
+                throw new ArgumentNullException(nameof(parameter));
+
             string fileLocation = (string) parameter;
             List<Domain.Product> domainProducts = products.ProductsList.Select(product => product.Model).ToList();
             new XmlExportImport().Export<Domain.Product, ProductXml>(fileLocation, domainProducts);

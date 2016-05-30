@@ -65,6 +65,12 @@
     <Compile Include="Domain\ProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ProductSearchTests.cs" />
+    <Compile Include="ViewModel\ExportImportProductsAsXmlTests.cs" />
+    <Compile Include="ViewModel\ProductCategoriesTests.cs" />
+    <Compile Include="ViewModel\ReloadProductCategoriesFromDbTests.cs" />
+    <Compile Include="ViewModel\ReloadProductsFromDbTests.cs" />
+    <Compile Include="ViewModel\SaveProductToDbTests.cs" />
+    <Compile Include="ViewModel\UpdateProductCategoriesInDbTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -81,6 +87,10 @@
     <ProjectReference Include="..\..\Service\Service\Service.csproj">
       <Project>{bf54b17e-dc37-4bfe-aa0c-42a7acb9e87f}</Project>
       <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ViewModel\ViewModel\ViewModel.csproj">
+      <Project>{9b62e5df-1e69-44a8-8984-ac202fad308d}</Project>
+      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

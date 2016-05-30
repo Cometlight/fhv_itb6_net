@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Domain;
 using Service;
 
@@ -18,6 +14,12 @@ namespace WebService.Controllers
         public IHttpActionResult Get()
         {
             return Ok(new CrudService<Product>().GetAll());
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            new CrudService<Product>().Delete(id);
+            return Ok();
         }
     }
 }

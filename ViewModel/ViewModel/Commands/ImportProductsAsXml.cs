@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Service;
 using XML;
 
 namespace ViewModel.Commands
 {
-    class ImportProductsAsXml : ICommand
+    public class ImportProductsAsXml : ICommand
     {
         public event EventHandler CanExecuteChanged;
 

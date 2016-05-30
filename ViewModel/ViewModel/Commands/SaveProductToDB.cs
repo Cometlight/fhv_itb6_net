@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Service;
 
@@ -15,15 +10,15 @@ namespace ViewModel.Commands
 
         private readonly Product product;
 
+        /// <param name="product">May not be null</param>
         public SaveProductToDb(Product product)
         {
-            this.product = product;
-            this.product.PropertyChanged += ProductOnPropertyChanged;
-        }
+            if (product == null)
+                throw new ArgumentNullException(nameof(product));
 
-        private void ProductOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
-        {
-            RaiseCanExecuteChanged();
+            this.product = product;
+            this.product.PropertyChanged += (sender, args) => RaiseCanExecuteChanged();
+            this.product.UnsavedChangesChanged += (sender, value) => RaiseCanExecuteChanged();
         }
 
         protected void RaiseCanExecuteChanged()
@@ -33,7 +28,7 @@ namespace ViewModel.Commands
 
         public bool CanExecute(object parameter)
         {
-            return product.Model != null && product.Name != null && product.Number != null;
+            return product.Model != null && product.Name != null && product.Number != null && product.UnsavedChanges;
         }
 
         /// <summary>
@@ -44,6 +39,7 @@ namespace ViewModel.Commands
         {
             Domain.Product productToUpdate = product.Model;
             new CrudService<Domain.Product>().Save(ref productToUpdate);
+            product.AllChangesSaved();
         }
     }
 }
