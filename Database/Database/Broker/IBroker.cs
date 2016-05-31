@@ -4,6 +4,10 @@ using Domain;
 
 namespace Database.Broker
 {
+    /// <summary>
+    /// All brokers should implement this simple interface to provide basic CRUD functionality.
+    /// </summary>
+    /// <typeparam name="T">The entity to handle</typeparam>
     public interface IBroker<T> where T : class, IId
     {
         void Delete(IDbConnection connection, T obj);

@@ -2,10 +2,9 @@
 
 namespace XML
 {
-    // TODO improve comments
     public abstract class DomainXml<TDomain, TXml> where TDomain : class, new()
     {
-        protected TXml managedXmlObject;    // needs to be set
+        protected TXml managedXmlObject;    // needs to be set, preferably in the constructor of the inheritor
 
         public void Convert(TDomain source)
         {
@@ -25,6 +24,10 @@ namespace XML
             return target;
         }
 
+        /// <summary>
+        /// Copies all property values from source to target.
+        /// Note that the source's and target's property names must be the same to use this method!
+        /// </summary>
         private void copyAllProperties<TSource, TTarget>(TSource source, ref TTarget target)
         {
             foreach (var property in typeof(TSource).GetProperties())

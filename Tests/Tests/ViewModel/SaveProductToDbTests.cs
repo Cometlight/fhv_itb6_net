@@ -77,6 +77,7 @@ namespace Tests.ViewModel
             Assert.AreEqual(entityUpdated.Number, entityFromDb.Number);
 
             // Clean up the database
+            broker.Delete(iDbConnection, entity.Id);
             broker.Delete(iDbConnection, entityViewModel.Model.Id);
             iDbConnection.Close();
         }

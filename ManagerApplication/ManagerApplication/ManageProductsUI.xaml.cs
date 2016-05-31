@@ -18,6 +18,9 @@ namespace ManagerApplication
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Loads all the products from the database using a command.
+        /// </summary>
         public void Initialize()
         {
             if (!initialized)
@@ -51,6 +54,9 @@ namespace ManagerApplication
             }
         }
 
+        /// <summary>
+        /// Exports the products to an XML file.
+        /// </summary>
         private void ButtonExport_OnClick(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog {Filter = "XML files (*.xml)|*.xml"};
@@ -65,6 +71,9 @@ namespace ManagerApplication
             }
         }
 
+        /// <summary>
+        /// Imports products from an XML file.
+        /// </summary>
         private void ButtonImport_OnClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "XML files (*.xml)|*.xml" };

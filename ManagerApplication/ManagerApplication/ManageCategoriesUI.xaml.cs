@@ -8,7 +8,7 @@ namespace ManagerApplication
     /// <summary>
     /// Interaction logic for ManageCategoriesUI.xaml
     /// </summary>
-    public partial class ManageCategoriesUI : UserControl
+    public partial class ManageCategoriesUI
     {
         private bool initialized;
 
@@ -17,6 +17,9 @@ namespace ManagerApplication
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Loads all the product categories from the database using a command.
+        /// </summary>
         public void Initialize()
         {
             if (!initialized)

@@ -55,6 +55,8 @@ namespace ViewModel.Commands
                 crudService.Save(ref domain);
             }
 
+            // At this point, existingCategories only contain the categories which were deleted from the user in the UI.
+            // Hence, let's remove them from the database.
             foreach (int? categoryToRemove in existingCategories)
             {
                 if (categoryToRemove.HasValue)

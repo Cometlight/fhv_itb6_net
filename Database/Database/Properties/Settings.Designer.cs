@@ -27,7 +27,7 @@ namespace Database.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
-            "tring>localhost</string>\r\n</ArrayOfString>")]
+            "tring>dbsrv.infeo.at</string>\r\n  <string>localhost</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection servername {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["servername"]));
@@ -38,7 +38,7 @@ namespace Database.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
-            "tring>fhv</string>\r\n</ArrayOfString>")]
+            "tring>fhv</string>\r\n  <string>fhv</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection usename {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["usename"]));
@@ -49,7 +49,8 @@ namespace Database.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
-            "tring>datenmanagement</string>\r\n</ArrayOfString>")]
+            "tring>datenmanagement</string>\r\n  <string>datenmanagement</string>\r\n</ArrayOfStr" +
+            "ing>")]
         public global::System.Collections.Specialized.StringCollection password {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["password"]));
@@ -60,7 +61,7 @@ namespace Database.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
-            "tring>net_db_local</string>\r\n</ArrayOfString>")]
+            "tring>fhv</string>\r\n  <string>net_db_local</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection database {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["database"]));

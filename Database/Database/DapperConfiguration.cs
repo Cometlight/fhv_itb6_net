@@ -6,14 +6,15 @@ namespace Database
 {
     public class DapperConfiguration
     {
-        private static bool isInitialized = false;
+        private static bool _isInitialized;
 
+        /// <summary>
+        /// Has to be called once before using the persistence layer.
+        /// </summary>
         public static void Initialize()
         {
-            if (!isInitialized)
+            if (!_isInitialized)
             {
-//                try
-//                {
                     FluentMapper.Initialize(config =>
                     {
                         config.AddMap(new AddressMapper());
@@ -34,11 +35,7 @@ namespace Database
                         config.AddMap(new WarehouseMapper());
                         config.ForDommel();
                     });
-//                } catch (Exception ex)
-//                {
-//                    Console.WriteLine(ex);
-//                }
-                isInitialized = true;
+                _isInitialized = true;
             }
         }
     }

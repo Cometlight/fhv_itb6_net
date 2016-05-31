@@ -27,7 +27,7 @@ namespace ManagerApplication
         public ProductUI()
         {
             InitializeComponent();
-            SelectedProduct = null; // by default; can later be changed through the property
+            SelectedProduct = null; // by default; can later be changed through the property setter
         }
     }
 }

@@ -3,6 +3,12 @@ using MySql.Data.MySqlClient;
 
 namespace Database
 {
+    /// <summary>
+    /// The ConnectionManager is used for creating database connections. It relies on
+    /// the filled out settings of this project.
+    /// The advantage of having everything centralized in this class is that it's easy
+    /// to change for example the IDbConnection type from MySqlConnection to another one.
+    /// </summary>
     public class ConnectionManager
     {
         private readonly string connectionString;

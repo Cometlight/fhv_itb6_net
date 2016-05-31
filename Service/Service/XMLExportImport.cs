@@ -28,12 +28,15 @@ namespace Service
 
         public List<TDomainType> Import<TDomainType, TXmlType>(string fileName) where TXmlType : DomainXml<TDomainType, TXmlType> where TDomainType : class, new()
         {
+            // Read XML file and insert the objects into List<TXmlType>
             List<TXmlType> xmlObjects;
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<TXmlType>));
             using (FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             {
                 xmlObjects = (List<TXmlType>) xmlSerializer.Deserialize(fileStream);
             }
+
+            // Convert from List<TXmlType> to List<TDomainType>
             List<TDomainType> domainObjects = new List<TDomainType>(xmlObjects.Count);
             foreach (TXmlType xmlObject in xmlObjects)
             {

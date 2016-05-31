@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 using Database;
 
-// TODO FIXME don't crash in case of missing DB
-// TODO FIXME background thread/task so UI is not blocked
 namespace ManagerApplication
 {
     /// <summary>

@@ -9,6 +9,10 @@ using Dapper;
 
 namespace Database.Broker
 {
+    /// <summary>
+    /// A basic broker providing CRUD functionality.
+    /// </summary>
+    /// <typeparam name="T">The entity to handle.</typeparam>
     public class Broker<T> : IBroker<T> where T : class, IId
     {
         /// <summary>
@@ -58,7 +62,8 @@ namespace Database.Broker
             // Domel has no valid implementation of MySQL of Insert() as of version 1.5
             // Hence, the following line does not work:
             // obj.Id = connection.Insert(obj);
-            
+            // I've already commited a fix, which was also accepted by the project owner, but
+            // the updates are not yet available through NuGet Packages.
             Type type = obj.GetType();
             string tableName = DommelMapper.Resolvers.Table(type);
             PropertyInfo keyProperty = DommelMapper.Resolvers.KeyProperty(type);
